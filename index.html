@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='./css/motion.css'>
+</head>
+
+
+	<body>
+		<div id="container">
+			<canvas id="myCanvas" width="1100" height="650" style="border:1px solid #000000;">
+			</canvas>
+		</div>
+
+		<script type='text/javascript'>
+			// var c = document.getElementById("myCanvas");
+			// var circle = c.getContext("2d");
+			// var xPos = 295;
+
+			// var ball = new Ball(x, y);
+
+			// function Ball(x, y){
+			// 	this.x = x;
+			// 	this.y = y;
+			// 	this.x_speed =  0;
+			// 	this.y_speed =  3;
+			// 	this.radius = 4;
+			// }	
+
+			// function render(){	
+			// 	circle.beginPath();
+			// 	circle.arc(xPos,150,40,0,2*Math.PI);
+			// 	circle.fillStyle = "#EEE5FF";
+			// 	circle.fill();
+			// }
+
+			// drawCircle();
+
+			// function leftCircle(){
+			// 	circle.x += (xPos - 100);
+			// }
+
+
+			// function rightCircle(){
+			// 	circle.x += (xPos + 100);				
+			// }
+
+
+	(function() {
+
+		function normalize(v){
+		    var length = Math.sqrt(v.x * v.x + v.y * v.y);
+		    return {x: v.x / length, y: v.y / length};
+		}
+
+				var canvas, circle,
+			    position = {x: 500, y: 200},
+			    target = {x: 600, y: 400};
+			    step = normalize({x: target.x - position.x, y: target.y - position.y});
+
+			    var radius = 10;
+				var color = 0;
+				var xPos = 295;
+
+		function init() {
+				var canvas  = document.getElementById("myCanvas");
+				var circle = canvas.getContext("2d");
+
+				circle.fillRect(0, 0, canvas.width,canvas.height);
+
+				// var radius = 10;
+				// var color = 10;
+				// var xPos = 295;
+
+			   setInterval(draw, 90000 / 60 / 20);
+				
+
+
+			function draw() {
+				circle.fillStyle = "rgb(150,29,28)";
+				circle.clearRect(0, 0, canvas.width, canvas.height);
+				circle.beginPath();
+				circle.arc(position.x, position.y, 50, 0, Math.PI * 2, true);
+				circle.fill();
+				radius +=0.4;
+				if(radius < 200) {
+					requestAnimationFrame(draw);
+				}
+
+				circle.closePath(); 
+
+			    position.x += step.x;
+			    position.y += step.y;
+			}
+
+
+
+
+			// function onFrame(event) {
+			// 	// Each frame, change the fill color of the path slightly by
+			// 	// adding 1 to its hue:
+			// 	path.fillColor.hue += 1;
+			// }
+
+			// function rightCircle(){
+			// 	circle.x += (xPos + 500);				
+			// }
+
+			draw();
+
+			rightCircle();
+			console.log(circle);
+
+		}
+
+
+		window.addEventListener('load', init,false);
+
+
+	}());
+
+	// var path = new Path.Rectangle({
+	// 		point: [75, 75],
+	// 		size: [75, 75],
+	// 		strokeColor: 'black'
+	// 	});
+
+	// 	function onFrame(event) {
+	// 		// Each frame, rotate the path by 3 degrees:
+	// 		path.rotate(3);
+	// 	}
+	// 		// }
+
+
+
+			// }
+
+
+			// }
+
+			
+
+		</script>
+	</body>
+</html>
+
